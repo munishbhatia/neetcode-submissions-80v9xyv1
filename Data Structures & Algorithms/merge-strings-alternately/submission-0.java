@@ -1,0 +1,31 @@
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        if(word1 == null) return word2;
+        if(word2 == null) return word1;
+
+        final StringBuilder response = new StringBuilder();
+        int i=0, j=0;
+        boolean flag = true;
+
+        while (i < word1.length() && j < word2.length()) {
+            if(flag) {
+                response.append(word1.charAt(i));
+                ++i;
+            } else {
+                response.append(word2.charAt(j));
+                ++j;
+            }
+            flag = !flag;
+        }
+
+        if(i < word1.length()) {
+            response.append(word1.substring(i));
+        }
+
+        if(j < word2.length()) {
+            response.append(word2.substring(j));
+        }
+
+        return response.toString();
+    }
+}
